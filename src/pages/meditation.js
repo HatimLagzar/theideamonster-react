@@ -3,16 +3,20 @@ import { useEffect, useState } from 'react';
 import { getAllMeditationTracks } from '../api/meditation-api';
 import toastr from 'toastr';
 import MeditationTrack from '../components/others/MeditationTrack/MeditationTrack';
+import useAuthenticationStatus from "../hooks/auth/useAuthenticationStatus";
+import {useNavigate} from "react-router-dom";
 
 function Meditation() {
   const [tracks, setTracks] = useState(null);
+  const isLoggedIn = useAuthenticationStatus();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = 'Meditation Space';
   }, []);
 
   useEffect(() => {
-    if (tracks === null) {
+    if (tracks === null && isLoggedIn) {
       getAllMeditationTracks()
         .then((response) => {
           setTracks(response.data.tracks);
@@ -26,6 +30,10 @@ function Meditation() {
         });
     }
   });
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   if (tracks === null) {
     return 'Loading...';

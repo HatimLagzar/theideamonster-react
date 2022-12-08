@@ -5,16 +5,18 @@ import {faCheckCircle, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {useEffect, useState} from "react";
 import {confirmSubscription} from "../api/subscription-api";
 import {useNavigate} from "react-router-dom";
+import useAuthenticationStatus from "../hooks/auth/useAuthenticationStatus";
 
 function SubscribeSuccess() {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const {setup_intent} = navigate.query
+  const isLoggedIn = useAuthenticationStatus();
 
   useEffect(() => {
     const abortController = new AbortController();
 
-    if (setup_intent) {
+    if (setup_intent && isLoggedIn) {
       confirmSubscription(setup_intent, abortController)
         .then(response => {
           setIsLoading(false)
@@ -30,6 +32,11 @@ function SubscribeSuccess() {
       abortController.abort();
     }
   }, [setup_intent])
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
+
   return <Layout>
     <div className="text mt-20 px-10">
       {

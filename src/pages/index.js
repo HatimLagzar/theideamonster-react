@@ -12,6 +12,8 @@ import {setBaskets, setSelectedBasket,} from '../store/features/tasks/basketsSli
 import WriteNewIdeaForm from '../components/others/WriteNewIdeaForm/WriteNewIdeaForm';
 import SpeechBubble from '../components/others/SpeechBubble/SpeechBubble';
 import RecordNewIdeaForm from "../components/others/RecordNewIdeaForm/RecordNewIdeaForm";
+import useAuthenticationStatus from "../hooks/auth/useAuthenticationStatus";
+import {useNavigate} from "react-router-dom";
 
 function Index() {
   const [showCreateBasketForm, setShowCreateBasketForm] = useState(false);
@@ -20,9 +22,11 @@ function Index() {
   const selectedBasket = useSelector((state) => state.baskets.selectedBasket);
   const showWriteNewIdeaForm = useSelector((state) => state.baskets.showWriteNewIdeaForm);
   const showRecordNewIdeaForm = useSelector((state) => state.baskets.showRecordNewIdeaForm);
+  const isLoggedIn = useAuthenticationStatus();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (baskets === null) {
+    if (baskets === null && isLoggedIn) {
       getUserCategories()
         .then((response) => {
           dispatch(setBaskets(response.data.categories));
@@ -36,6 +40,10 @@ function Index() {
         });
     }
   });
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   function selectBasketHandler(basket) {
     dispatch(setSelectedBasket(basket));

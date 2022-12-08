@@ -9,7 +9,8 @@ import InlineWeekDaysCalendar from "../../components/others/InlineWeekDaysCalend
 import {storeInCalendar} from "../../api/calendar-api";
 import toastr from "toastr";
 import {STRING_TYPE} from "../../utils/constants/task";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import useAuthenticationStatus from "../../hooks/auth/useAuthenticationStatus";
 
 function CalendarCreate() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,13 +19,15 @@ function CalendarCreate() {
   const [selectedTask, setSelectedTask] = useState(null);
   const [selectedStartingDate, setSelectedStartingDate] = useState(moment().startOf('day'))
   const [selectedEndDate, setSelectedEndDate] = useState(moment().startOf('day').add(1, 'day'))
+  const isLoggedIn = useAuthenticationStatus();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.backgroundColor = '#f9f9f9';
     document.body.querySelectorAll('.top-left-bg, .bottom-right-bg')
       .forEach(item => item.style.display = 'none')
 
-    if (baskets === null) {
+    if (baskets === null && isLoggedIn) {
       getUserCategories()
         .then(response => {
           setBaskets(response.data.categories);
@@ -38,6 +41,10 @@ function CalendarCreate() {
         })
     }
   }, [baskets])
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   function handleStoreInCalendar(e) {
     e.preventDefault();

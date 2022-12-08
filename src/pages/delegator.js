@@ -7,6 +7,8 @@ import CreateDelegableForm from "../components/others/CreateDelegableForm/Create
 import ShowDelegable from "../components/others/ShowDelegable/ShowDelegable";
 import DelegatedProfileForm from "../components/others/DelegatedProfileForm/DelegatedProfileForm";
 import toastr from "toastr";
+import useAuthenticationStatus from "../hooks/auth/useAuthenticationStatus";
+import {useNavigate} from "react-router-dom";
 
 function Delegator() {
   const [delegables, setDelegables] = useState(null);
@@ -14,9 +16,11 @@ function Delegator() {
   const [showDelegatedProfileForm, setShowDelegatedProfileForm] = useState(false);
   const [selectedBasket, setSelectedBasket] = useState(null);
   const [selectedProfile, setSelectedProfile] = useState(null);
+  const isLoggedIn = useAuthenticationStatus();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (delegables === null) {
+    if (delegables === null && isLoggedIn) {
       getUserDelegables()
         .then(response => {
           setDelegables(response.data.delegables);
@@ -30,6 +34,10 @@ function Delegator() {
         })
     }
   }, [delegables])
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   return <Layout>
     <h1 className={'text-3xl text-black text-center leading-none mt-7 flex justify-center'}>

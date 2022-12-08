@@ -7,16 +7,20 @@ import WrapperWithBorder from '../components/shared/WrapperWithBorder/WrapperWit
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import {getPublicKey} from "../utils/stripe/variables";
+import useAuthenticationStatus from "../hooks/auth/useAuthenticationStatus";
+import {useNavigate} from "react-router-dom";
 
 const stripePromise = loadStripe(getPublicKey());
 
 function Subscribe() {
   const [clientSecret, setClientSecret] = useState(null);
+  const isLoggedIn = useAuthenticationStatus();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const abortController = new AbortController();
 
-    if (clientSecret === null) {
+    if (clientSecret === null && isLoggedIn) {
       getClientSecret(abortController)
         .then((response) => {
           setClientSecret(response.data.clientSecret);
@@ -34,6 +38,10 @@ function Subscribe() {
       abortController.abort();
     };
   }, [clientSecret]);
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   if (clientSecret === null) {
     return 'Loading...';

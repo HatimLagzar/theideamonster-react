@@ -10,6 +10,7 @@ import {getItemById, updateInCalendar} from "../../api/calendar-api";
 import toastr from "toastr";
 import {STRING_TYPE} from "../../utils/constants/task";
 import {Link, useNavigate, useParams} from "react-router-dom";
+import useAuthenticationStatus from "../../hooks/auth/useAuthenticationStatus";
 
 function CalendarEdit() {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,9 +22,10 @@ function CalendarEdit() {
   const [selectedEndDate, setSelectedEndDate] = useState(null)
   const navigate = useNavigate()
   const {id} = useParams()
+  const isLoggedIn = useAuthenticationStatus();
 
   useEffect(() => {
-    if (item === null && baskets) {
+    if (item === null && baskets && isLoggedIn) {
       getItemById(id)
         .then(response => {
           setItem(response.data.item);
@@ -46,7 +48,7 @@ function CalendarEdit() {
     document.body.querySelectorAll('.top-left-bg, .bottom-right-bg')
       .forEach(item => item.style.display = 'none')
 
-    if (baskets === null) {
+    if (baskets === null && isLoggedIn) {
       getUserCategories()
         .then(response => {
           setBaskets(response.data.categories);
@@ -60,6 +62,10 @@ function CalendarEdit() {
         })
     }
   }, [baskets])
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   function handleStoreInCalendar(e) {
     e.preventDefault();

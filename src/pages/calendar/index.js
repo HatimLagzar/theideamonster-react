@@ -7,12 +7,15 @@ import {getAllInCalendar} from "../../api/calendar-api";
 import CalendarItemList from "../../components/others/CalendarItemList/CalendarItemList";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarPlus} from "@fortawesome/free-solid-svg-icons";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import useAuthenticationStatus from "../../hooks/auth/useAuthenticationStatus";
 
 function CalendarIndex() {
   const [uncategorizedCalendar, setUncategorizedCalendar] = useState(null)
   const [calendar, setCalendar] = useState(null)
   const [selectedStartingDate, setSelectedStartingDate] = useState(moment().startOf('day'))
+  const isLoggedIn = useAuthenticationStatus();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.backgroundColor = '#f9f9f9';
@@ -34,6 +37,10 @@ function CalendarIndex() {
         console.log(error);
       })
   }, [selectedStartingDate])
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   return <Layout>
     <div className="mx-5 mt-5">

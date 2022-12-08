@@ -14,6 +14,8 @@ import EditMilestoneMapForm from "../components/others/EditMilestoneMapForm/Edit
 import Draggable from "react-draggable";
 import {random} from "lodash/number";
 import MapQuote from "../components/others/MapQuote/MapQuote";
+import useAuthenticationStatus from "../hooks/auth/useAuthenticationStatus";
+import {useNavigate} from "react-router-dom";
 
 function Map() {
   const [showCreateMilestoneForm, setShowCreateMilestoneForm] = useState(false);
@@ -25,6 +27,8 @@ function Map() {
   const [fullInPixel, setFullInPixel] = useState(370);
   const videoRef = useRef();
   const pageContentWrapperRef = useRef();
+  const isLoggedIn = useAuthenticationStatus();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = 'Milestones Map';
@@ -33,7 +37,7 @@ function Map() {
   }, []);
 
   useEffect(() => {
-    if (milestones === null) {
+    if (milestones === null && isLoggedIn) {
       getUserMilestones()
         .then(response => {
           setMilestones(response.data.milestones);
@@ -49,7 +53,7 @@ function Map() {
   }, [milestones]);
 
   useEffect(() => {
-    if (baskets === null) {
+    if (baskets === null && isLoggedIn) {
       getUserCategories()
         .then(response => {
           setBaskets(response.data.categories);
@@ -78,6 +82,10 @@ function Map() {
       abortController.abort();
     }
   }, [randomQuote]);
+
+  if (!isLoggedIn) {
+    navigate('/login')
+  }
 
   function calculatePercentage(reelValue) {
     return (Math.floor((reelValue * 60) / 100) + 9) + '%';
