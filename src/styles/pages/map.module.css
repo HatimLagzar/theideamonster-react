@@ -1,0 +1,64 @@
+.background {
+    color: white;
+    height: 100vh;
+    background-image: linear-gradient(180deg, #4ed0e1 0%, #4ed0e1 30%, #8bc34b 30%);
+    position: relative;
+    width: 100%;
+}
+
+.video {
+    background-image: linear-gradient(180deg, #57d7e3 0%, #57d7e3 60%, #96ca55 50%);
+}
+
+@media screen and (min-width: 1024px) {
+    .video {
+        background-image: linear-gradient(180deg, #57d7e3 0%, #57d7e3 34%, #96ca55 34%);
+    }
+}
+
+.bgImage {
+    position: fixed;
+    z-index: 0;
+    top: 15%;
+    width: 160%;
+    max-width: none;
+    left: 53%;
+    transform: translateX(-50%);
+}
+
+.wrapper {
+    z-index: 1;
+    position: relative;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.road {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    background-position: 50% 186px;
+    background-size: 10%;
+    position: relative;
+}
+
+@media screen and (min-width: 800px) {
+    .bgImage {
+        position: fixed;
+        z-index: 0;
+        top: 0;
+        width: 100%;
+        max-width: none;
+        transform: none;
+        left: 15%;
+    }
+
+    .road {
+        background-size: contain;
+        background-position: 50% 247px;
+        height: 100vh;
+    }
+}

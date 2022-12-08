@@ -1,0 +1,15 @@
+.wrapper {
+    position: fixed;
+    bottom: 13%;
+    background-color: #5a62cf;
+    color: white;
+    flex-direction: column;
+    left: 50%;
+    transform: translate(-50%, 0);
+    /* width: 90%; */
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}

@@ -1,0 +1,18 @@
+.wrapper {
+    width: 48%;
+    margin-bottom: 10px;
+}
+
+.label {
+    padding: 8px 20px;
+    border: 1px solid #eaebec;
+    display: block;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+input:checked ~ .label {
+    border-color: #5a62cf;
+    border-width: 2px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+}

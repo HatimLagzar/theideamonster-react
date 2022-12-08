@@ -1,0 +1,34 @@
+.title {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.start-page {
+  margin: 30px auto;
+  max-width: 400px;
+}
+
+.monster {
+  width: 70%;
+  margin: 40px auto;
+}
+
+.monster-text {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: -53px;
+  display: block;
+}
+
+.start-btn {
+  background-color: #5a62cf;
+  min-width: 70%;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media screen and (max-width: 425px) {
+  .start-page {
+    margin: 30px 50px;
+    max-width: none;
+  }
+}

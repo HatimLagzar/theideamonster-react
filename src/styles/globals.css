@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Source+Sans+Pro&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #5a62cf;
+}
+
+.top-left-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.bottom-right-bg {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.top-left-bg,
+.bottom-right-bg {
+  z-index: -1;
+}
+
+@media screen and (min-width: 768px) {
+
+  .top-left-bg,
+  .bottom-right-bg {
+    width: 500px;
+  }
+}
+
+.bg-main {
+  background-color: #5a62cf;
+  color: white;
+}
+
+.avatars-list input:checked + label {
+  border: 1px solid white;
+}

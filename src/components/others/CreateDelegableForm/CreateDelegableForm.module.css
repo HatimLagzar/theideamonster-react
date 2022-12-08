@@ -1,0 +1,17 @@
+.wrapper {
+  position: fixed;
+  bottom: 15%;
+  background-color: #5a62cf;
+  color: white;
+  flex-direction: column;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.baskets {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}

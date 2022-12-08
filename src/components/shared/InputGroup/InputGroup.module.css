@@ -1,0 +1,14 @@
+.group {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    top: 11px;
+    left: 15px;
+}
+
+.input {
+    border-color: #999;
+    color: black;
+}

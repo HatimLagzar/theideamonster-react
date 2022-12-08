@@ -1,0 +1,54 @@
+.basket {
+  /* width: 49%; */
+  margin-top: 25px;
+}
+
+.basket:first-of-type {
+  margin-top: 0;
+}
+
+.basket:nth-of-type(2) {
+  margin-top: 0;
+}
+
+.image {
+  width: 75px;
+}
+
+.avatar {
+  width: 70px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 5px;
+  z-index: -1;
+}
+
+.title {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  padding: 2px 10px;
+  text-align: center;
+  background-color: #5a62cf;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 4px 1px rgb(0 0 0 / 20%);
+  max-width: 80%;
+}
+
+.counter {
+  width: 20px;
+  height: 20px;
+  background-color: #5a62cf;
+  /*margin-top: 5px;*/
+  display: block;
+  line-height: normal;
+  font-size: 0.9rem;
+  bottom: 5px;
+  left: -10px;
+  /*position: relative;*/
+  /*top: 65px;*/
+}
