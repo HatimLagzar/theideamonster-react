@@ -4,6 +4,7 @@ import {getBaseApiUrl} from "./base-api";
 
 export const getUserCategories = () => {
   return axios.get(getBaseApiUrl() + '/categories', {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },
@@ -15,6 +16,7 @@ export const createCategory = (name) => {
   formData.set('name', name);
 
   return axios.post(getBaseApiUrl() + '/categories', formData, {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },

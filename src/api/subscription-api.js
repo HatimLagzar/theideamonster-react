@@ -7,6 +7,7 @@ export const getClientSecret = (abortController) => {
     getBaseApiUrl() + '/subscriptions/intent',
     {},
     {
+      crossDomain: true,
       signal: abortController.signal,
       headers: {
         Authorization: `Bearer ${authService.getToken()}`,
@@ -20,6 +21,7 @@ export const confirmSubscription = (setupIntent, abortController) => {
     getBaseApiUrl() + '/subscriptions/confirm/' + setupIntent,
     {},
     {
+      crossDomain: true,
       signal: abortController.signal,
       headers: {
         Authorization: `Bearer ${authService.getToken()}`,

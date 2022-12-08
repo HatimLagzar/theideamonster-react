@@ -4,6 +4,7 @@ import {getBaseApiUrl} from "./base-api";
 
 export const fetchAuthenticatedUserInfo = () => {
   return axios.get(getBaseApiUrl() + '/me', {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },

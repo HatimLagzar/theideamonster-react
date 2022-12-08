@@ -4,6 +4,7 @@ import {getBaseApiUrl} from "./base-api";
 
 export const getUserDelegables = () => {
   return axios.get(getBaseApiUrl() + '/delegables', {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },
@@ -12,6 +13,7 @@ export const getUserDelegables = () => {
 
 export const createDelegable = (formData) => {
   return axios.post(getBaseApiUrl() + '/delegables', formData, {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },
@@ -25,6 +27,7 @@ export const updateDelegable = (id, name) => {
       name,
     },
     {
+      crossDomain: true,
       headers: {
         Authorization: `Bearer ${authService.getToken()}`,
       },

@@ -11,6 +11,7 @@ export const updateProfile = (id, name, job, avatar) => {
       avatar,
     },
     {
+      crossDomain: true,
       headers: {
         Authorization: `Bearer ${authService.getToken()}`,
       },

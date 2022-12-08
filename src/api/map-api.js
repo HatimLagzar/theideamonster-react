@@ -4,6 +4,7 @@ import {getBaseApiUrl} from "./base-api";
 
 export const getUserMilestones = () => {
   return axios.get(getBaseApiUrl() + '/milestones', {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },
@@ -12,6 +13,7 @@ export const getUserMilestones = () => {
 
 export const getRandomQuote = (abortController) => {
   return axios.get(getBaseApiUrl() + '/quotes', {
+    crossDomain: true,
     signal: abortController.signal,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
@@ -25,6 +27,7 @@ export const createMilestone = (endsAt, basketId) => {
   formData.set('basket_id', basketId);
 
   return axios.post(getBaseApiUrl() + '/milestones', formData, {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },
@@ -41,6 +44,7 @@ export const updateMilestone = (id, endsAt, basketId, percentage, isDone) => {
       percentage,
     },
     {
+      crossDomain: true,
       headers: {
         Authorization: `Bearer ${authService.getToken()}`,
       },

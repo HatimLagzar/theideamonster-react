@@ -5,7 +5,9 @@ export const sendLink = (email) => {
   const formData = new FormData();
   formData.set('email', email);
 
-  return axios.post(getBaseApiUrl() + '/recover-link', formData);
+  return axios.post(getBaseApiUrl() + '/recover-link', formData, {
+    crossDomain: true,
+  });
 };
 
 export const resetPassword = (email, password, passwordConfirmation, token) => {
@@ -15,5 +17,7 @@ export const resetPassword = (email, password, passwordConfirmation, token) => {
   formData.set('password_confirmation', passwordConfirmation);
   formData.set('token', token);
 
-  return axios.post(getBaseApiUrl() + '/reset-password', formData);
+  return axios.post(getBaseApiUrl() + '/reset-password', formData, {
+    crossDomain: true,
+  });
 };

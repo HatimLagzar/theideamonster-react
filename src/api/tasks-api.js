@@ -7,6 +7,7 @@ export const toggleTaskStatus = (taskId) => {
     getBaseApiUrl() + '/tasks/' + taskId + '/status',
     {},
     {
+      crossDomain: true,
       headers: {
         Authorization: `Bearer ${authService.getToken()}`,
       },
@@ -25,6 +26,7 @@ export const createTask = (basketId, content, type = 1) => {
   formData.set('type', type);
 
   return axios.post(getBaseApiUrl() + '/tasks/' + basketId, formData, {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },
@@ -39,6 +41,7 @@ export const updateTask = (taskId, content) => {
     getBaseApiUrl() + '/tasks/' + taskId + '/update',
     formData,
     {
+      crossDomain: true,
       headers: {
         Authorization: `Bearer ${authService.getToken()}`,
       },
@@ -48,6 +51,7 @@ export const updateTask = (taskId, content) => {
 
 export const deleteTask = (taskId) => {
   return axios.delete(getBaseApiUrl() + '/tasks/' + taskId, {
+    crossDomain: true,
     headers: {
       Authorization: `Bearer ${authService.getToken()}`,
     },
