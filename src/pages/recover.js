@@ -38,8 +38,8 @@ function Recover() {
       <h2 className={'text-2xl text-black'}>{"Don't worry."}</h2>
       <p className='text-xs text-right mt-2'>
         Back to ?{' '}
-        <Link href={'/login'}>
-          <a className={'text-black underline font-bold'}>Login</a>
+        <Link to={'/login'} className={'text-black underline font-bold'}>
+          Login
         </Link>
       </p>
 

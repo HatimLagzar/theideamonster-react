@@ -37,10 +37,9 @@ function CalendarIndex() {
 
   return <Layout>
     <div className="mx-5 mt-5">
-      <Link href={'/calendar/create'}>
-        <a className={'bg-main text-white text-center py-1 px-10 mb-2 text-center rounded block'}>
-          <FontAwesomeIcon className={'mr-2'} icon={faCalendarPlus}/> New
-        </a>
+      <Link to={'/calendar/create'}
+            className={'bg-main text-white text-center py-1 px-10 mb-2 text-center rounded block'}>
+        <FontAwesomeIcon className={'mr-2'} icon={faCalendarPlus}/> New
       </Link>
       <InlineWeekDaysCalendar
         startDate={selectedStartingDate}

@@ -79,15 +79,11 @@ function ResetPassword() {
           }
         </button>
       </form>
-      <Link href={'/recover'}>
-        <a className='block mx-auto text-center text-xs underline mt-3'>
-          Recover your account
-        </a>
+      <Link to={'/recover'} className='block mx-auto text-center text-xs underline mt-3'>
+        Recover your account
       </Link>
-      <Link href={'/login'}>
-        <a className='block mx-auto text-center text-xs underline mt-3'>
-          Login
-        </a>
+      <Link to={'/login'} className='block mx-auto text-center text-xs underline mt-3'>
+        Login
       </Link>
     </WrapperWithBorder>
   </Layout>

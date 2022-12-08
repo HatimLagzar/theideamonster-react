@@ -8,7 +8,7 @@ function Start() {
         Taking action on your ideas has never been so easy
       </h1>
 
-      <img 
+      <img
         className={styles.monster}
         src='images/start-page-character.png'
         alt='Character'
@@ -16,15 +16,11 @@ function Start() {
 
       <span className={styles['monster-text']}>The Idea Basket</span>
 
-      <Link href={'/login'}>
-        <a
-          className={
-            'text-3xl block py-3 px-5 mx-auto text-white mt-10 rounded-2xl ' +
-            styles['start-btn']
-          }
-        >
-          Start
-        </a>
+      <Link to={'/login'} className={
+        'text-3xl block py-3 px-5 mx-auto text-white mt-10 rounded-2xl ' +
+        styles['start-btn']
+      }>
+        Start
       </Link>
     </div>
   );

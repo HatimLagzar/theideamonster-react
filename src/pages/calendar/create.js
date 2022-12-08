@@ -74,10 +74,8 @@ function CalendarCreate() {
 
   return <Layout>
     <form className="flex mx-5 mt-5 flex-col" onSubmit={handleStoreInCalendar}>
-      <Link href={'/calendar'}>
-        <a className={'bg-main text-white text-center py-1 px-10 mb-2 text-center rounded block'}>
+      <Link to={'/calendar'} className={'bg-main text-white text-center py-1 px-10 mb-2 text-center rounded block'}>
           <FontAwesomeIcon className={'mr-2'} icon={faArrowLeft}/> Back
-        </a>
       </Link>
 
       <InlineWeekDaysCalendar

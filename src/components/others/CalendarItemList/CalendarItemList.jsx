@@ -46,10 +46,8 @@ function CalendarItemList({item, setCalendar, calendar}) {
         <ul
           className={'rounded shadow border bg-white py-1 flex absolute -right-2 top-6 flex-col ' + (showDropdown ? 'block' : 'hidden')}>
           <li className={'text-sm'}>
-            <Link href={'/calendar/' + item.id}>
-              <a className={'px-4 p-1 block'}>
-                <FontAwesomeIcon icon={faEdit} size={'sm'}/> Edit
-              </a>
+            <Link to={'/calendar/' + item.id} className={'px-4 p-1 block'}>
+              <FontAwesomeIcon icon={faEdit} size={'sm'}/> Edit
             </Link>
           </li>
           <li className={'text-sm'}>

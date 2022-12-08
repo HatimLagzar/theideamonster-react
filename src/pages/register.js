@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Layout from '../components/shared/Layout/Layout';
 import WrapperWithBorder from '../components/shared/WrapperWithBorder/WrapperWithBorder';
-import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope, faLock, faUser} from '@fortawesome/free-solid-svg-icons';
 import InputGroup from '../components/shared/InputGroup/InputGroup';
-import { login, register } from '../api/login-api';
-import { useState } from 'react';
+import {login, register} from '../api/login-api';
+import {useState} from 'react';
 import toastr from 'toastr';
 import {Link, useNavigate} from "react-router-dom";
 
@@ -44,7 +44,7 @@ function Register() {
     <Layout>
       <WrapperWithBorder>
         <h1 className='text-2xl'>Sign up. It is fast and easy.</h1>
-        <hr className='bg-gray-500 my-5' />
+        <hr className='bg-gray-500 my-5'/>
         <form onSubmit={handleSubmit}>
           <InputGroup
             type={'text'}
@@ -90,12 +90,12 @@ function Register() {
           />
 
           <label className='block text-sm mt-5 mb-2 leading-none'>
-            <input className='checkbox mr-1' type={'checkbox'} required /> I
+            <input className='checkbox mr-1' type={'checkbox'} required/> I
             read and accept <a className='underline'>Terms & Conditions</a>.
           </label>
 
           <label className='block text-sm leading-none'>
-            <input className='checkbox mr-1' type={'checkbox'} /> Send me the
+            <input className='checkbox mr-1' type={'checkbox'}/> Send me the
             Newsletter weekly.
           </label>
 
@@ -104,10 +104,8 @@ function Register() {
           </button>
           <div className='block'>
             <div></div>
-            <Link href={'/login'}>
-              <a className='py-2 w-1/3 bg-gray-700 block mt-2 ml-auto text-center text-white'>
-                Or Sign In
-              </a>
+            <Link to={'/login'} className='py-2 w-1/3 bg-gray-700 block mt-2 ml-auto text-center text-white'>
+              Or Sign In
             </Link>
           </div>
         </form>
