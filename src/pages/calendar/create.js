@@ -71,6 +71,10 @@ function CalendarCreate() {
           toastr.error(error.response.data.message);
         }
 
+        if (error.response.status === 401 && isLoggedIn) {
+          navigate('/subscribe')
+        }
+
         console.log(error);
       })
   }

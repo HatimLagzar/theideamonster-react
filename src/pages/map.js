@@ -47,6 +47,10 @@ function Map() {
             toastr.error(error.response.data.message);
           }
 
+          if (error.response.status === 401 && isLoggedIn) {
+            navigate('/subscribe')
+          }
+
           console.log(error);
         })
     }
@@ -61,6 +65,10 @@ function Map() {
         .catch(error => {
           if (error.response) {
             toastr.error(error.response.data.message);
+          }
+
+          if (error.response.status === 401 && isLoggedIn) {
+            navigate('/subscribe')
           }
 
           console.log(error);

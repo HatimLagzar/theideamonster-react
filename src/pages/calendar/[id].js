@@ -38,6 +38,10 @@ function CalendarEdit() {
             toastr.error(error.response.data.message);
           }
 
+          if (error.response.status === 401 && isLoggedIn) {
+            navigate('/subscribe')
+          }
+
           console.log(error);
         })
     }
@@ -56,6 +60,10 @@ function CalendarEdit() {
         .catch(error => {
           if (error.response) {
             toastr.error(error.response.data.message);
+          }
+
+          if (error.response.status === 401 && isLoggedIn) {
+            navigate('/subscribe')
           }
 
           console.log(error);
@@ -88,6 +96,10 @@ function CalendarEdit() {
         setIsLoading(false);
         if (error.response && error.response.data && error.response.data.message) {
           toastr.error(error.response.data.message);
+        }
+
+        if (error.response.status === 401 && isLoggedIn) {
+          navigate('/subscribe')
         }
 
         console.log(error);
