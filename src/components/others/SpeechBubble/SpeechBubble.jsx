@@ -2,7 +2,7 @@
 function SpeechBubble({ text, disableImage = false, style = {} }) {
   return (
     <div
-      className='absolute top-[60%] left-2 flex px-2 items-center'
+      className='absolute top-[60%] left-2 flex px-2 items-end'
       style={{ ...style }}
     >
       {!disableImage ? (

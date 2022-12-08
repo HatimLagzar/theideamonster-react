@@ -90,12 +90,13 @@ function Index() {
         <>
           <SpeechBubble
             text={'Click on "Create Basket" to create your first goals.'}
+            style={{ right: '0', left: 'auto' }}
           />
           <SpeechBubble
             text={
               "It's just the beginning of a great journey, you can do this!"
             }
-            style={{ top: '72%', width: '80%', right: 0, left: 'auto' }}
+            style={{ top: '75%', right: '0', left: 'auto' }}
             disableImage
           />
         </>
