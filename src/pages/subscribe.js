@@ -58,7 +58,7 @@ function Subscribe() {
         <h1 className={'text-3xl text-black mb-3'}>Premium Plan</h1>
         <p>
           Benefit from more advanced features by subscribing to our premium plan
-          just for <strong>$3.00 per year</strong>.
+          just for <strong>$20.00 per month</strong>.
         </p>
         <p>{"You'll benefit from a range of features exclusive to our premium users."}</p>
         <p className='mt-1'>The features list:</p>

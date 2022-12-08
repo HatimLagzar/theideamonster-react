@@ -56,7 +56,7 @@ export default function CheckoutForm() {
         disabled={!stripe}
       >
         {!isLoading ? (
-          'Subscribe only for $3.00 per year'
+          'Subscribe only for $20.00 per month'
         ) : (
           <FontAwesomeIcon icon={faSpinner} className={'fa-spin'} />
         )}
