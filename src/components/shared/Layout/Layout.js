@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 export default function Layout(props) {
   const NORMAL_PAGES_PATH_NAMES = [
     '/login',
+    '/',
     '/register',
     '/recover',
     '/start',

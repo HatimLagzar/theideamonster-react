@@ -1,17 +1,20 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faClose, faPlus, faSpinner} from "@fortawesome/free-solid-svg-icons";
+import {faClose, faPlus, faSpinner, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import {createCategory} from "../../../api/categories-api";
 import toastr from "toastr";
 import {setBaskets} from "../../../store/features/tasks/basketsSlice";
 import {useDispatch, useSelector} from "react-redux";
 import FloatingWrapper from "../../shared/FloatingWrapper/FloatingWrapper";
+import useAuthenticationStatus from "../../../hooks/auth/useAuthenticationStatus";
+import {Link} from "react-router-dom";
 
 export default function CreateBasketForm({show = false, setShowCreateBasketForm}) {
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const baskets = useSelector(state => state.baskets.baskets)
+  const isLoggedIn = useAuthenticationStatus();
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -57,14 +60,21 @@ export default function CreateBasketForm({show = false, setShowCreateBasketForm}
               required={true}
             />
             <hr className={'bg-white'}/>
-            <button className='block mt-3 py-2 px-10 mx-auto focus-visible:outline-0 shadow-xl rounded-xl'
-                    disabled={isLoading}>
-              {!isLoading
-                ? <>
-                  <FontAwesomeIcon icon={faPlus}/> Add Basket
-                </>
-                : <FontAwesomeIcon icon={faSpinner} spin={true}/>}
-            </button>
+            {
+              isLoggedIn
+                ? <button className='block mt-3 py-2 px-10 mx-auto focus-visible:outline-0 shadow-xl rounded-xl'
+                          disabled={isLoading}>
+                  {!isLoading
+                    ? <>
+                      <FontAwesomeIcon icon={faPlus}/> Add Basket
+                    </>
+                    : <FontAwesomeIcon icon={faSpinner} spin={true}/>}
+                </button>
+                : <Link to={'/register'}
+                        className='block w-1/2 hover:bg-indigo-500 text-center mt-3 py-2 px-10 mx-auto focus-visible:outline-0 shadow-xl rounded-xl'>
+                  <FontAwesomeIcon icon={faUserPlus}/> Click here to Create an Account
+                </Link>
+            }
           </form>
         </FloatingWrapper>
         : ''

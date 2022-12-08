@@ -41,9 +41,9 @@ function Index() {
     }
   });
 
-  if (!isLoggedIn) {
-    navigate('/login')
-  }
+  // if (!isLoggedIn) {
+  //   navigate('/login')
+  // }
 
   function selectBasketHandler(basket) {
     dispatch(setSelectedBasket(basket));
@@ -57,7 +57,7 @@ function Index() {
         Think about the results you want to see
       </h1>
 
-      <img 
+      <img
         className={'block mx-auto mt-5'}
         src='/images/baskets-monster.png'
         alt='Monster Writing'
@@ -66,37 +66,42 @@ function Index() {
       />
 
       <div className='flex flex-row justify-between mt-6 flex-wrap w-full'>
-        {baskets instanceof Array
-          ? baskets.length > 0
-            ? baskets.map((basket, index) => {
-                return (
-                  <BasketDisplay
-                    key={index + '-basket'}
-                    selectBasketHandler={() => selectBasketHandler(basket)}
-                    basket={basket}
-                  />
-                );
-              })
+        {
+          isLoggedIn
+            ?
+            baskets instanceof Array
+              ? baskets.length > 0
+                ? baskets.map((basket, index) => {
+                  return (
+                    <BasketDisplay
+                      key={index + '-basket'}
+                      selectBasketHandler={() => selectBasketHandler(basket)}
+                      basket={basket}
+                    />
+                  );
+                })
+                : ''
+              : 'Loading Baskets...'
             : ''
-          : 'Loading Baskets...'}
-        <CreateBasket setShowCreateBasketForm={setShowCreateBasketForm} />
+        }
+        <CreateBasket setShowCreateBasketForm={setShowCreateBasketForm}/>
         <CreateBasketForm
           show={showCreateBasketForm}
           setShowCreateBasketForm={setShowCreateBasketForm}
         />
       </div>
 
-      {baskets instanceof Array && baskets.length === 0 ? (
+      {(baskets instanceof Array && baskets.length === 0) || !isLoggedIn ? (
         <>
           <SpeechBubble
             text={'Click on "Create Basket" to create your first goals.'}
-            style={{ right: '0', left: 'auto' }}
+            style={{right: '0', left: 'auto'}}
           />
           <SpeechBubble
             text={
               "It's just the beginning of a great journey, you can do this!"
             }
-            style={{ top: '75%', right: '0', left: 'auto' }}
+            style={{top: '75%', right: '0', left: 'auto'}}
             disableImage
           />
         </>
@@ -104,11 +109,11 @@ function Index() {
         ''
       )}
 
-      {selectedBasket ? <BasketTodos basket={selectedBasket} /> : ''}
+      {selectedBasket ? <BasketTodos basket={selectedBasket}/> : ''}
 
-      {showWriteNewIdeaForm ? <WriteNewIdeaForm /> : ''}
+      {showWriteNewIdeaForm ? <WriteNewIdeaForm/> : ''}
 
-      {showRecordNewIdeaForm ? <RecordNewIdeaForm  /> : ''}
+      {showRecordNewIdeaForm ? <RecordNewIdeaForm/> : ''}
     </Layout>
   );
 };
