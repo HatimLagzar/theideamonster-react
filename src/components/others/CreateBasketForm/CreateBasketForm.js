@@ -71,7 +71,7 @@ export default function CreateBasketForm({show = false, setShowCreateBasketForm}
                     : <FontAwesomeIcon icon={faSpinner} spin={true}/>}
                 </button>
                 : <Link to={'/register'}
-                        className='block w-1/2 hover:bg-indigo-500 text-center mt-3 py-2 px-10 mx-auto focus-visible:outline-0 shadow-xl rounded-xl'>
+                        className='block w-full lg:w-1/2 hover:bg-indigo-500 text-center mt-3 py-2 px-10 mx-auto focus-visible:outline-0 shadow-xl rounded-xl'>
                   <FontAwesomeIcon icon={faUserPlus}/> Click here to Create an Account
                 </Link>
             }
