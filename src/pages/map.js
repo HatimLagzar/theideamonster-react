@@ -31,7 +31,7 @@ function Map() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Milestones Map';
+    document.title = 'Milestones Map | The Idea Monster';
     document.querySelector("body").style.overflow = 'hidden';
     getFullInPixel();
   }, []);

@@ -26,6 +26,10 @@ function Index() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = 'Baskets | The Idea Monster'
+  })
+
+  useEffect(() => {
     if (baskets === null && isLoggedIn) {
       getUserCategories()
         .then((response) => {

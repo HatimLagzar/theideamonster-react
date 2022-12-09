@@ -7,6 +7,7 @@ import {useState} from "react";
 import {resetPassword} from "../../api/recover-api";
 import toastr from "toastr";
 import {Link, useNavigate, useParams} from "react-router-dom";
+import {useEffect} from "react";
 
 function ResetPassword() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +16,10 @@ function ResetPassword() {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const navigate = useNavigate();
   const {token} = useParams();
+
+  useEffect(() => {
+    document.title = 'Reset Password | The Idea Monster'
+  })
 
   function handleSubmit(e) {
     e.preventDefault();

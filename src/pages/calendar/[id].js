@@ -25,6 +25,10 @@ function CalendarEdit() {
   const isLoggedIn = useAuthenticationStatus();
 
   useEffect(() => {
+    document.title = 'Edit Calendar Item | The Idea Monster'
+  })
+
+  useEffect(() => {
     if (item === null && baskets && isLoggedIn) {
       getItemById(id)
         .then(response => {

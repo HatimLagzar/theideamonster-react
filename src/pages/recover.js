@@ -7,10 +7,15 @@ import {useState} from "react";
 import {sendLink} from "../api/recover-api";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
+import {useEffect} from "react";
 
 function Recover() {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Recover | The Idea Monster'
+  })
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -14,6 +14,10 @@ function SubscribeSuccess() {
   const isLoggedIn = useAuthenticationStatus();
 
   useEffect(() => {
+    document.title = 'Congrats | The Idea Monster'
+  })
+
+  useEffect(() => {
     const abortController = new AbortController();
 
     if (setup_intent && isLoggedIn) {

@@ -20,6 +20,10 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = 'Login | The Idea Monster'
+  })
+
   function handleSubmit(e) {
     e.preventDefault();
 

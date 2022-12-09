@@ -18,6 +18,10 @@ function Subscribe() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = 'Subscribe | The Idea Monster'
+  })
+
+  useEffect(() => {
     const abortController = new AbortController();
 
     if (clientSecret === null && isLoggedIn) {

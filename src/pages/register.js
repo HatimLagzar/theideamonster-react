@@ -1,4 +1,3 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Layout from '../components/shared/Layout/Layout';
 import WrapperWithBorder from '../components/shared/WrapperWithBorder/WrapperWithBorder';
 import {faEnvelope, faLock, faUser} from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +6,7 @@ import {login, register} from '../api/login-api';
 import {useState} from 'react';
 import toastr from 'toastr';
 import {Link, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 function Register() {
   const [firstName, setFirstName] = useState('');
@@ -15,6 +15,10 @@ function Register() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Register | The Idea Monster'
+  })
 
   function handleSubmit(e) {
     e.preventDefault();

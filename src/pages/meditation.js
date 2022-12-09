@@ -12,7 +12,7 @@ function Meditation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Meditation Space';
+    document.title = 'Meditation Space | The Idea Monster';
   }, []);
 
   useEffect(() => {

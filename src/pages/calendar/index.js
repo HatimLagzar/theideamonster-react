@@ -18,6 +18,7 @@ function CalendarIndex() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = 'Calendar | The Idea Monster'
     document.body.style.backgroundColor = '#f9f9f9';
     document.body.querySelectorAll('.top-left-bg, .bottom-right-bg')
       .forEach(item => item.style.display = 'none')

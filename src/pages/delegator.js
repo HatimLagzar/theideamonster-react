@@ -20,6 +20,10 @@ function Delegator() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = 'Help Tracker | The Idea Monster'
+  })
+
+  useEffect(() => {
     if (delegables === null && isLoggedIn) {
       getUserDelegables()
         .then(response => {
