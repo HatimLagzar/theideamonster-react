@@ -36,7 +36,7 @@ export default function Navbar() {
             </span>
           </button>
         </li>
-        <li className={'py-3 px-5 lg:hover:bg-gray-100'}>
+        <li className={'py-3 px-3 lg:hover:bg-gray-100'}>
           <Link to={'/'} className={document.location.pathname === '/' ? 'text-main' : ''}>
             <FontAwesomeIcon size={'1x'} icon={faHome}/>
             <span className='hidden lg:inline-block ml-2 uppercase'>
@@ -44,7 +44,7 @@ export default function Navbar() {
               </span>
           </Link>
         </li>
-        <li className={'py-3 px-5 lg:hover:bg-gray-100'}>
+        <li className={'py-3 px-3 lg:hover:bg-gray-100'}>
           <Link to={'/subscribe'}>
             <FontAwesomeIcon size={'1x'} icon={faCrown}/>
             <span className='hidden lg:inline-block ml-2 uppercase'>
@@ -52,7 +52,7 @@ export default function Navbar() {
               </span>
           </Link>
         </li>
-        <li className={'py-3 px-5 lg:hover:bg-gray-100'}>
+        <li className={'py-3 px-3 lg:hover:bg-gray-100'}>
           <Link to={'/calendar'}>
             <FontAwesomeIcon size={'1x'} icon={faCalendar}/>
             <span className='hidden lg:inline-block ml-2 uppercase'>
@@ -62,12 +62,12 @@ export default function Navbar() {
         </li>
         <li className={'inline-block lg:hidden'}>
           <button
-            className={'w-14 h-14 block rounded-full border shadow text-main'}
+            className={'w-12 h-12 block rounded-full border shadow text-main'}
           >
             <FontAwesomeIcon icon={faPlus} size={'2x'}/>
           </button>
         </li>
-        <li className={'py-3 px-5 lg:hover:bg-gray-100'}>
+        <li className={'py-3 px-3 lg:hover:bg-gray-100'}>
           <Link to={'/delegator'}>
             <FontAwesomeIcon size={'1x'} icon={faPeopleGroup}/>
             <span className='hidden lg:inline-block ml-2 uppercase'>
@@ -75,13 +75,13 @@ export default function Navbar() {
               </span>
           </Link>
         </li>
-        <li className={'py-3 px-5 lg:hover:bg-gray-100'}>
+        <li className={'py-3 px-3 lg:hover:bg-gray-100'}>
           <Link to={'/map'}>
               <FontAwesomeIcon size={'1x'} icon={faMap}/>
               <span className='hidden lg:inline-block ml-2 uppercase'>Map</span>
           </Link>
         </li>
-        <li className={'py-3 px-5 lg:hover:bg-gray-100'}>
+        <li className={'py-3 px-3 lg:hover:bg-gray-100'}>
           <Link to={'/meditation'}>
               <FontAwesomeIcon size={'1x'} icon={faBrain}/>
               <span className='hidden lg:inline-block ml-2 uppercase'>
