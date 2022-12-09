@@ -10,13 +10,13 @@ function Start() {
 
       <img
         className={styles.monster}
-        src='images/start-page-character.png'
+        src='/images/start-page-character.png'
         alt='Character'
       />
 
       <span className={styles['monster-text']}>The Idea Basket</span>
 
-      <Link to={'/login'} className={
+      <Link to={'/'} className={
         'text-3xl block py-3 px-5 mx-auto text-white mt-10 rounded-2xl ' +
         styles['start-btn']
       }>
