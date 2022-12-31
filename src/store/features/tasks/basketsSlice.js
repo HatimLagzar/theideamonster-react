@@ -17,7 +17,7 @@ export const basketsSlice = createSlice({
       const basketId = action.payload.id
       const newName = action.payload.name
       state.baskets = state.baskets.map(basket => {
-        if (basket.id !== basketId) {
+        if (basket.id === basketId) {
           basket.name = newName
         }
 
