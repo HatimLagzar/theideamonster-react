@@ -69,21 +69,21 @@ export default function BasketTodos({ basket }) {
 
       <div className="flex justify-center mt-3 rounded-full shadow-xl mx-auto px-4">
         <button
-          className='block text-sm py-2 px-3 text-center focus-visible:outline-0  rounded-r-none border-r border-indigo-500'
+          className='block text-sm py-1 px-2 text-center focus-visible:outline-0  rounded-r-none border-r border-indigo-500'
           onClick={handleWriteNewIdea}
         >
           <FontAwesomeIcon icon={faPencil} />
           <span className={'ml-2 font-montserrat'}>Write</span>
         </button>
         <button
-          className='block text-sm py-2 px-3 text-center focus-visible:outline-0 rounded-full rounded-l-none'
+          className='block text-sm py-1 px-2 text-center focus-visible:outline-0 rounded-full rounded-l-none'
           onClick={handleRecordNewIdea}
         >
           <FontAwesomeIcon icon={faMicrophone} />
           <span className={'ml-2 font-montserrat'}>Record</span>
         </button>
         <button
-          className='block text-sm py-2 px-3 text-center focus-visible:outline-0 rounded-full rounded-l-none'
+          className='block text-sm py-1 px-2 text-center focus-visible:outline-0 rounded-full rounded-l-none'
           onClick={handleDeleteBasket}
           disabled={isDeletingBasket}
         >
