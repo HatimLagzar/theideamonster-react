@@ -9,6 +9,10 @@ export const basketsSlice = createSlice({
     showRecordNewIdeaForm: false,
   },
   reducers: {
+    deleteBasket: (state, action) => {
+      const basketId = action.payload
+      state.baskets = state.baskets.filter(basket => basket.id !== basketId);
+    },
     setBaskets: (state, action) => {
       state.baskets = action.payload;
     },
@@ -73,6 +77,6 @@ export const basketsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {setBaskets, setSelectedBasket, setShowWriteNewIdeaForm, setShowRecordNewIdeaForm, setTaskStatus, setTaskName} = basketsSlice.actions;
+export const {setBaskets, deleteBasket, setSelectedBasket, setShowWriteNewIdeaForm, setShowRecordNewIdeaForm, setTaskStatus, setTaskName} = basketsSlice.actions;
 
 export default basketsSlice.reducer;

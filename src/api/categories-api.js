@@ -22,3 +22,12 @@ export const createCategory = (name) => {
     },
   });
 };
+
+export const deleteCategory = (id) => {
+  return axios.delete(`${getBaseApiUrl()}/categories/${id}`, {
+    crossDomain: true,
+    headers: {
+      Authorization: `Bearer ${authService.getToken()}`,
+    },
+  });
+};
