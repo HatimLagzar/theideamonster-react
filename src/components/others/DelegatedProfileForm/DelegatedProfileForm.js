@@ -96,7 +96,8 @@ export default function DelegatedProfileForm(
       </button>
       {
         showChooseAvatar
-          ? <ChooseAvatar key={'choose-avatar-profile'} setShowCreateDelegableForm={setShowChooseAvatar}
+          ? <ChooseAvatar key={'choose-avatar-profile'} 
+                          setShowCreateDelegableForm={() => setShowChooseAvatar(false)}
                           handleFinish={() => {
                             setShowChooseAvatar(false)
                           }}

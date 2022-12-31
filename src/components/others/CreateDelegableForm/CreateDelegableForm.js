@@ -47,10 +47,15 @@ export default function CreateDelegableForm(
   }, [baskets]);
 
   function handleSelectTask(task, isChecked) {
-    formData.tasks = formData.tasks.filter(itemId => itemId !== task.id);
+    let tasks = formData.tasks.filter(itemId => itemId !== task.id);
     if (isChecked) {
-      formData.tasks.push(task.id)
+      tasks.push(task.id)
     }
+
+    setFormData({
+      ...formData,
+      tasks
+    });
   }
 
   function handleFinish() {
@@ -78,8 +83,8 @@ export default function CreateDelegableForm(
       show
         ? <FloatingWrapper>
           <button className={'absolute top-1 right-2 text-sm'} onClick={() => {
-            setShowCreateDelegableForm(false)
             setStep(CHOOSE_BASKET)
+            setShowCreateDelegableForm(false)
           }}>
             <FontAwesomeIcon icon={faClose}/>
           </button>
@@ -99,7 +104,12 @@ export default function CreateDelegableForm(
           }
           {
             step === SELECT_TASKS
-              ? <SelectBasketTasks setStep={setStep} selectedBasket={selectedBasket} handleSelectTask={handleSelectTask}/>
+              ? <SelectBasketTasks 
+                setStep={setStep} 
+                selectedBasket={selectedBasket} 
+                handleSelectTask={handleSelectTask}
+                selectedTasks={formData.tasks}
+              />
               : ''
           }
           {
@@ -126,7 +136,11 @@ export default function CreateDelegableForm(
                               }}
                               handleFinish={handleFinish}
                               isLoading={isLoading}
-                              setShowCreateDelegableForm={setShowCreateDelegableForm}/>
+                              setShowCreateDelegableForm={() => {
+                                setShowCreateDelegableForm(false);
+                                setStep(CHOOSE_BASKET);
+                              }}
+                              />
               : ''
           }
         </FloatingWrapper>
