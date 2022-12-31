@@ -63,6 +63,7 @@ function CalendarCreate() {
         toastr.success(response.data.message);
         setSelectedBasket('');
         setSelectedTask(null);
+        navigate('/calendar');
         // setSelectedStartingDate(moment().startOf('day'));
         // setSelectedEndDate(moment().startOf('day').add(1, 'day'));
       })
