@@ -13,6 +13,17 @@ export const basketsSlice = createSlice({
       const basketId = action.payload
       state.baskets = state.baskets.filter(basket => basket.id !== basketId);
     },
+    setBasketNewName: (state, action) => {
+      const basketId = action.payload.id
+      const newName = action.payload.name
+      state.baskets = state.baskets.map(basket => {
+        if (basket.id !== basketId) {
+          basket.name = newName
+        }
+
+        return basket;
+      })
+    },
     setBaskets: (state, action) => {
       state.baskets = action.payload;
     },
@@ -77,6 +88,6 @@ export const basketsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {setBaskets, deleteBasket, setSelectedBasket, setShowWriteNewIdeaForm, setShowRecordNewIdeaForm, setTaskStatus, setTaskName} = basketsSlice.actions;
+export const {setBaskets, setBasketNewName, deleteBasket, setSelectedBasket, setShowWriteNewIdeaForm, setShowRecordNewIdeaForm, setTaskStatus, setTaskName} = basketsSlice.actions;
 
 export default basketsSlice.reducer;

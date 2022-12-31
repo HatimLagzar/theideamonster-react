@@ -1,22 +1,24 @@
 import styles from './basket-todos.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose, faMicrophone, faPencil, faSpinner, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faMicrophone, faPencil, faSpinner, faTrashAlt, faICursor } from '@fortawesome/free-solid-svg-icons';
 import TaskItem from '../TaskItem/TaskItem';
 import {
   deleteBasket,
+  setBasketNewName,
   setSelectedBasket,
   setShowRecordNewIdeaForm,
   setShowWriteNewIdeaForm,
 } from '../../../store/features/tasks/basketsSlice';
 import { useDispatch } from 'react-redux';
 import FloatingWrapper from '../../shared/FloatingWrapper/FloatingWrapper';
-import { deleteCategory } from '../../../api/categories-api';
+import { deleteCategory, updateCategory } from '../../../api/categories-api';
 import { useState } from 'react';
 import toastr from 'toastr';
 
 export default function BasketTodos({ basket }) {
   const dispatch = useDispatch();
   const [isDeletingBasket, setIsDeletingBasket] = useState(false);
+  const [isRenaming, setIsRenaming] = useState(false);
 
   function handleWriteNewIdea() {
     dispatch(setShowWriteNewIdeaForm(true));
@@ -45,6 +47,24 @@ export default function BasketTodos({ basket }) {
       })
   }
 
+  function handleRenameBasket(e) {
+    setIsRenaming(true);
+
+    dispatch(setBasketNewName({ id: basket.id, name: e.currentTarget.value }));
+
+    updateCategory(basket.id, e.currentTarget.value)
+      .then(response => {
+        setIsRenaming(false);
+        toastr.success(response.data.message);
+      })
+      .catch(error => {
+        setIsRenaming(false);
+        if (error.response && error.response.data.message) {
+          toastr.error(error.response.data.message || 'Failed to rename basket');
+        }
+      })
+  }
+
   return (
     <FloatingWrapper>
       <button
@@ -55,9 +75,16 @@ export default function BasketTodos({ basket }) {
       >
         <FontAwesomeIcon icon={faClose} />
       </button>
-      <h3 className={styles.title + ' text-2xl text-white text-center mb-3'}>
-        {basket.content}
-      </h3>
+      <h4 className={styles.title + ' text-lg text-white text-center mb-3 hover:opacity-70 hover:cursor-text rounded-lg'}>
+        <input
+          type={'text'}
+          className={'bg-transparent border-none outline-none text-center w-auto disabled:opacity-70'}
+          maxLength={255}
+          defaultValue={basket.name}
+          onBlur={handleRenameBasket}
+          disabled={isRenaming}
+        />
+      </h4>
 
       <ul>
         {basket.tasks.length > 0

@@ -23,6 +23,18 @@ export const createCategory = (name) => {
   });
 };
 
+export const updateCategory = (id, name) => {
+  const formData = new FormData();
+  formData.set('name', name);
+
+  return axios.post(`${getBaseApiUrl()}/categories/${id}`, formData, {
+    crossDomain: true,
+    headers: {
+      Authorization: `Bearer ${authService.getToken()}`,
+    },
+  });
+};
+
 export const deleteCategory = (id) => {
   return axios.delete(`${getBaseApiUrl()}/categories/${id}`, {
     crossDomain: true,
