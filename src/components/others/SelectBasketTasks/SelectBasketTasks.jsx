@@ -7,7 +7,7 @@ import toastr from "toastr";
 export default function SelectBasketTasks({ selectedBasket, setStep, handleSelectTask, selectedTasks }) {
   return <>
     <h3 className={'text-2xl text-white text-center mb-3'}>
-      {selectedBasket.name}
+      {selectedBasket.name} - Please select tasks
     </h3>
     {
       selectedBasket

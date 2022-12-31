@@ -123,7 +123,10 @@ export default function CreateDelegableForm(
                                         setMission={value => {
                                           setFormData({...formData, name: value})
                                         }}
-                                        setShowCreateDelegableForm={setShowCreateDelegableForm}
+                                        setShowCreateDelegableForm={() => {
+                                          setShowCreateDelegableForm(false)
+                                          setStep(CHOOSE_BASKET)
+                                        }}
                                         selectedBasket={selectedBasket}
                                         handleSelectTask={handleSelectTask}/>
               : ''

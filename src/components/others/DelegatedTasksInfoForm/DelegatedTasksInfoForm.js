@@ -14,7 +14,7 @@ export default function DelegatedTasksInfoForm(
 ) {
   return (
     <div>
-      <button className={'absolute top-1 right-2 text-sm'} onClick={() => setShowCreateDelegableForm(false)}>
+      <button className={'absolute top-1 right-2 text-sm'} onClick={setShowCreateDelegableForm}>
         <FontAwesomeIcon icon={faClose}/></button>
       <h3 className={'text-2xl text-white text-center mb-3'}>
         Delegate a Task
