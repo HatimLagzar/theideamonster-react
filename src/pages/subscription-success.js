@@ -30,6 +30,8 @@ function SubscribeSuccess() {
           if (error.response) {
             toastr.error(error.response.data.message);
           }
+
+          navigate('/subscribe');
         })
     }
 
