@@ -4,13 +4,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckCircle, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {useEffect, useState} from "react";
 import {confirmSubscription} from "../api/subscription-api";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import useAuthenticationStatus from "../hooks/auth/useAuthenticationStatus";
 
 function SubscribeSuccess() {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const {setup_intent} = navigate.query
+  const [searchParams] = useSearchParams();
+  const setup_intent = searchParams.get('setup_intent');
   const isLoggedIn = useAuthenticationStatus();
 
   useEffect(() => {
