@@ -1,13 +1,13 @@
 import styles from './inline-week-days-calendar.module.css'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendar} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment/moment";
 import 'daterangepicker/daterangepicker.css'
 import 'daterangepicker/daterangepicker'
 import $ from 'jquery'
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-export default function InlineWeekDaysCalendar({startDate, endDate, setSelectedStartingDate, setSelectedEndDate, single = false}) {
+export default function InlineWeekDaysCalendar({ startDate, endDate, setSelectedStartingDate, setSelectedEndDate, single = false }) {
   const [sevenDays, setSevenDays] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function InlineWeekDaysCalendar({startDate, endDate, setSelectedS
         format: 'M/DD hh:mm A'
       }
     })
-      .on('apply.daterangepicker', function(ev, picker) {
+      .on('apply.daterangepicker', function (ev, picker) {
         setSelectedStartingDate(picker.startDate);
         setSelectedEndDate(picker.endDate);
       });
@@ -65,12 +65,12 @@ export default function InlineWeekDaysCalendar({startDate, endDate, setSelectedS
   return <div className={styles.wrapper + ' mb-5 rounded'}>
     <div className={styles.selectedDateInfo}>
       <div className={styles.text}>
-        <p className={'leading-none'}>June 24, 2022</p>
+        <p className={'leading-none'}>{moment(new Date()).format('MMMM DD, YYYY')}</p>
         <small className={'text-gray-600 leading-none'}>10 Tasks Today</small>
       </div>
       <label className={'px-2 py-1 rounded border border-gray-200 shadow-sm'}>
-        <FontAwesomeIcon icon={faCalendar} className={'text-main'}/>
-        <input type="text" id={'date-time-range'} className={'h-0 w-0 invisible'}/>
+        <FontAwesomeIcon icon={faCalendar} className={'text-main'} />
+        <input type="text" id={'date-time-range'} className={'h-0 w-0 invisible'} />
       </label>
     </div>
     <div className={styles.weekDays}>
