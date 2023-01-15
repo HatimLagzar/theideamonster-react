@@ -7,7 +7,14 @@ import 'daterangepicker/daterangepicker'
 import $ from 'jquery'
 import { useEffect, useState } from "react";
 
-export default function InlineWeekDaysCalendar({ startDate, endDate, setSelectedStartingDate, setSelectedEndDate, single = false }) {
+export default function InlineWeekDaysCalendar({
+  tasksCount,
+  startDate,
+  endDate,
+  setSelectedStartingDate,
+  setSelectedEndDate,
+  single = false
+}) {
   const [sevenDays, setSevenDays] = useState([]);
 
   useEffect(() => {
@@ -66,7 +73,7 @@ export default function InlineWeekDaysCalendar({ startDate, endDate, setSelected
     <div className={styles.selectedDateInfo}>
       <div className={styles.text}>
         <p className={'leading-none'}>{moment(new Date()).format('MMMM DD, YYYY')}</p>
-        <small className={'text-gray-600 leading-none'}>10 Tasks Today</small>
+        <small className={'text-gray-600 leading-none'}>{tasksCount || 0} Tasks Today</small>
       </div>
       <label className={'px-2 py-1 rounded border border-gray-200 shadow-sm'}>
         <FontAwesomeIcon icon={faCalendar} className={'text-main'} />

@@ -29,6 +29,7 @@ function CalendarIndex() {
       .then(response => {
         setCalendar(response.data.calendar);
         setUncategorizedCalendar(response.data.uncategorizedCalendar);
+        console.log(response.data.uncategorizedCalendar)
       })
       .catch(error => {
         if (error.response) {
@@ -54,6 +55,7 @@ function CalendarIndex() {
         <FontAwesomeIcon className={'mr-2'} icon={faCalendarPlus}/> New
       </Link>
       <InlineWeekDaysCalendar
+        tasksCount={calendar ? calendar.length : 0}
         startDate={selectedStartingDate}
         endDate={selectedStartingDate}
         setSelectedEndDate={setSelectedStartingDate}
