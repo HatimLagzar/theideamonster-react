@@ -62,7 +62,7 @@ export default function Navbar() {
         </li>
         <li className={'inline-block lg:hidden'}>
           <button
-            className={'w-12 h-12 block rounded-full border shadow text-main'}
+            className={'w-12 h-12 block rounded-full border shadow text-main flex items-center justify-center'}
           >
             <FontAwesomeIcon icon={faPlus} size={'2x'}/>
           </button>

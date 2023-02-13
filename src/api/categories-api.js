@@ -23,10 +23,7 @@ export const createCategory = (name) => {
   });
 };
 
-export const updateCategory = (id, name) => {
-  const formData = new FormData();
-  formData.set('name', name);
-
+export const updateCategory = (id, formData) => {
   return axios.post(`${getBaseApiUrl()}/categories/${id}`, formData, {
     crossDomain: true,
     headers: {

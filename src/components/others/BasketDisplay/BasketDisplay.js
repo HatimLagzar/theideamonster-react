@@ -5,10 +5,13 @@ export default function BasketDisplay({ basket, selectBasketHandler }) {
     <div
       className={
         styles.basket +
-        ' flex flex-col items-center justify-end cursor-pointer lg:w-1/3 w-1/2'
+        ' flex flex-col items-center justify-end cursor-pointer lg:w-1/3 w-1/2 relative'
       }
       onClick={() => selectBasketHandler()}
     >
+      {
+        basket.logo && <img className={styles.logo} src={basket.logo} />
+      }
       <span className={styles.counter + ' rounded-full text-white text-center'}>
         {basket.tasks.length}
       </span>
