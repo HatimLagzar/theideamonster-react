@@ -1,5 +1,5 @@
 import styles from './basket-todos.module.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClose,
   faMicrophone,
@@ -17,13 +17,13 @@ import {
   setShowRecordNewIdeaForm,
   setShowWriteNewIdeaForm,
 } from '../../../store/features/tasks/basketsSlice';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import FloatingWrapper from '../../shared/FloatingWrapper/FloatingWrapper';
-import {deleteCategory, updateCategory} from '../../../api/categories-api';
-import {useState} from 'react';
+import { deleteCategory, updateCategory } from '../../../api/categories-api';
+import { useState } from 'react';
 import toastr from 'toastr';
 
-export default function BasketTodos({basket}) {
+export default function BasketTodos({ basket }) {
   const dispatch = useDispatch();
   const [isDeletingBasket, setIsDeletingBasket] = useState(false);
   const [isRenaming, setIsRenaming] = useState(false);
@@ -63,7 +63,7 @@ export default function BasketTodos({basket}) {
 
     setIsRenaming(true);
 
-    dispatch(setBasketNewName({id: basket.id, name: e.currentTarget.value}));
+    dispatch(setBasketNewName({ id: basket.id, name: e.currentTarget.value }));
 
     const formData = new FormData();
     formData.set('name', e.currentTarget.value);
@@ -95,7 +95,7 @@ export default function BasketTodos({basket}) {
     updateCategory(basket.id, formData)
       .then(response => {
         setIsUpdatingLogo(false);
-        dispatch(setBasketNewLogo({id: basket.id, logo: response.data.basket.logo}));
+        dispatch(setBasketNewLogo({ id: basket.id, logo: response.data.basket.logo }));
         toastr.success(response.data.message);
       })
       .catch(error => {
@@ -114,12 +114,12 @@ export default function BasketTodos({basket}) {
           dispatch(setSelectedBasket(null));
         }}
       >
-        <FontAwesomeIcon icon={faClose}/>
+        <FontAwesomeIcon icon={faClose} />
       </button>
 
       <input
         onChange={handleUpdateLogo}
-        style={{display: 'none'}}
+        style={{ display: 'none' }}
         accept={'image/*'}
         type="file"
         id={`basketLogo_${basket.id}`}
@@ -127,12 +127,18 @@ export default function BasketTodos({basket}) {
       />
       <label
         htmlFor={`basketLogo_${basket.id}`}
-        className={'absolute p-3 top-0 left-0 text-sm'}
+        className={'absolute p-3 top-0 left-0 text-sm cursor-pointer'}
       >
         {
-          basket.logo
-            ? <img src={basket.logo} alt="Logo" style={{maxHeight: '35px', maxWidth: '35px'}}/>
-            : <FontAwesomeIcon icon={faImage}/>
+          isUpdatingLogo
+            ? <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
+            : <>
+              {
+                basket.logo
+                  ? <img src={basket.logo} alt="Logo" style={{ maxHeight: '35px', maxWidth: '35px' }} />
+                  : <FontAwesomeIcon icon={faImage} />
+              }
+            </>
         }
       </label>
 
@@ -151,7 +157,7 @@ export default function BasketTodos({basket}) {
       <ul>
         {basket.tasks.length > 0
           ? basket.tasks.map((task, index) => {
-            return <TaskItem key={task.id + '-task'} task={task}/>;
+            return <TaskItem key={task.id + '-task'} task={task} />;
           })
           : ''}
       </ul>
@@ -161,14 +167,14 @@ export default function BasketTodos({basket}) {
           className='block text-sm py-1 px-2 text-center focus-visible:outline-0  rounded-r-none border-r border-indigo-500'
           onClick={handleWriteNewIdea}
         >
-          <FontAwesomeIcon icon={faPencil}/>
+          <FontAwesomeIcon icon={faPencil} />
           <span className={'ml-2 font-montserrat'}>Write</span>
         </button>
         <button
           className='block text-sm py-1 px-2 text-center focus-visible:outline-0 rounded-full rounded-l-none'
           onClick={handleRecordNewIdea}
         >
-          <FontAwesomeIcon icon={faMicrophone}/>
+          <FontAwesomeIcon icon={faMicrophone} />
           <span className={'ml-2 font-montserrat'}>Record</span>
         </button>
         <button
@@ -179,11 +185,11 @@ export default function BasketTodos({basket}) {
           {
             !isDeletingBasket
               ? <>
-                <FontAwesomeIcon icon={faTrashAlt}/>
+                <FontAwesomeIcon icon={faTrashAlt} />
                 <span className={'ml-2 font-montserrat'}>Delete</span>
               </>
               : <>
-                <FontAwesomeIcon icon={faSpinner} className='fa-spin'/>
+                <FontAwesomeIcon icon={faSpinner} className='fa-spin' />
               </>
           }
         </button>
