@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import authService from '../services/auth/AuthService';
 import Router from './Router/Router';
 import OneSignal from "react-onesignal";
@@ -20,12 +20,10 @@ export default function App() {
     }
   }, [token]);
 
-
   useEffect(() => {
     if (initialized === false) {
       OneSignal.init({
-        appId: "d53b5846-dfba-42d8-8106-35f30303928e",
-        allowLocalhostAsSecureOrigin: true
+        appId: "d53b5846-dfba-42d8-8106-35f30303928e"
       });
 
       setInitialized(true);
@@ -34,7 +32,7 @@ export default function App() {
     OneSignal.isPushNotificationsEnabled()
       .then(response => {
         if (response === false) {
-          OneSignal.showSlidedownPrompt({force: true});
+          OneSignal.showSlidedownPrompt({ force: true });
         }
       })
 
@@ -44,9 +42,9 @@ export default function App() {
 
   return (
     <>
-      <img className='top-left-bg' src='/images/top-right-bg.png' alt={'bg'}/>
-      <img className='bottom-right-bg' src='/images/bottom-left-bg.png' alt={'bg'}/>
-      <Router/>
+      <img className='top-left-bg' src='/images/top-right-bg.png' alt={'bg'} />
+      <img className='bottom-right-bg' src='/images/bottom-left-bg.png' alt={'bg'} />
+      <Router />
     </>
   );
 }
